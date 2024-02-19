@@ -5,6 +5,8 @@ import com.springboot.dto.OrderDto;
 import com.springboot.dto.PlaceOrderDto;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 public interface CartService {
 
     ResponseEntity<?> addProductToCart(AddProductCartDto addProductCartDto);
@@ -13,4 +15,5 @@ public interface CartService {
     OrderDto increaseProductQuantity(AddProductCartDto addProductCartDto);
     OrderDto decreaseProductQuantity(AddProductCartDto addProductCartDto);
     OrderDto placeOrder(PlaceOrderDto placeOrderDto);
+    public List<OrderDto> getAllPlacedOrder(Long userId);
 }

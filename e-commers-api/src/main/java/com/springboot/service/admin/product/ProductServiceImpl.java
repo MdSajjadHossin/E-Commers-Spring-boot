@@ -6,6 +6,7 @@ import com.springboot.entity.Product;
 import com.springboot.repository.CategoryRepo;
 import com.springboot.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -50,5 +51,34 @@ public class ProductServiceImpl implements ProductService{
             return true;
         }
         return false;
+    }
+
+    public ProductDto getProductById(Long productId){
+        Optional<Product> optionalProduct = productRepo.findById(productId);
+        if(optionalProduct.isPresent()){
+            return optionalProduct.get().getDto();
+        }else{
+            return null;
+        }
+    }
+
+    public ProductDto updateProduct(Long productId, ProductDto productDto) throws IOException {
+        Optional<Product> optionalProduct = productRepo.findById(productId);
+        Optional<Category> optionalCategory = categoryRepo.findById(productDto.getCategoryId());
+
+        if(optionalProduct.isPresent() && optionalCategory.isPresent()){
+            Product product = new Product();
+
+            product.setName(productDto.getName());
+            product.setPrice(productDto.getPrice());
+            product.setDescription(productDto.getDescription());
+            product.setCategory(optionalCategory.get());
+            if(productDto.getImg() != null){
+                product.setImg(productDto.getImg().getBytes());
+            }
+            return productRepo.save(product).getDto();
+        }else{
+            return null;
+        }
     }
 }
