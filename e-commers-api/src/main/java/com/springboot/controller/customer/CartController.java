@@ -4,7 +4,7 @@ import com.springboot.dto.AddProductCartDto;
 import com.springboot.dto.OrderDto;
 import com.springboot.dto.PlaceOrderDto;
 import com.springboot.exceptions.ValidationException;
-import com.springboot.service.cart.CartService;
+import com.springboot.service.customer.cart.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

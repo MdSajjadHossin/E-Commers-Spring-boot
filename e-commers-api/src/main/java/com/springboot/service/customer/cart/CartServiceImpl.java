@@ -1,4 +1,4 @@
-package com.springboot.service.cart;
+package com.springboot.service.customer.cart;
 
 import com.springboot.dto.AddProductCartDto;
 import com.springboot.dto.CartItemsDto;
@@ -9,7 +9,6 @@ import com.springboot.enums.OrderStatus;
 import com.springboot.exceptions.ValidationException;
 import com.springboot.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
