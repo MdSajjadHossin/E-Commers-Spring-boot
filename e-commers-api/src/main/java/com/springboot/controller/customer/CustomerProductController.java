@@ -1,5 +1,6 @@
 package com.springboot.controller.customer;
 
+import com.springboot.dto.ProductDetailsDto;
 import com.springboot.dto.ProductDto;
 import com.springboot.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,14 @@ public class CustomerProductController {
     public ResponseEntity<List<ProductDto>> getAllProductsByName(@PathVariable String name){
         List<ProductDto> productDto = customerService.getAllProductByName(name);
         return ResponseEntity.ok(productDto);
+    }
+
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<ProductDetailsDto> getProductsDetailById(@PathVariable Long productId){
+        ProductDetailsDto productDetailsDto = customerService.getProductDetailsById(productId);
+        if(productDetailsDto == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(productDetailsDto);
     }
 }
