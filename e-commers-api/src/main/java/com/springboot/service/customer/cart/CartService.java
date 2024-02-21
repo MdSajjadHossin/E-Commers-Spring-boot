@@ -6,6 +6,7 @@ import com.springboot.dto.PlaceOrderDto;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CartService {
 
@@ -16,4 +17,5 @@ public interface CartService {
     OrderDto decreaseProductQuantity(AddProductCartDto addProductCartDto);
     OrderDto placeOrder(PlaceOrderDto placeOrderDto);
     public List<OrderDto> getAllPlacedOrder(Long userId);
+    OrderDto searchOrderByTrackingId(UUID trackingId);
 }

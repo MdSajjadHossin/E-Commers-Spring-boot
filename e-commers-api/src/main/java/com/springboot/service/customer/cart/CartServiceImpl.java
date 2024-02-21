@@ -199,4 +199,12 @@ public class CartServiceImpl implements CartService{
         return orderRepo.findByUserIdAndOrderStatusIn(userId, List.of(OrderStatus.Shipped, OrderStatus.Placed, OrderStatus.Delivered)).stream().map(Order::getOrderDto).collect(Collectors.toList());
     }
 
+    public OrderDto searchOrderByTrackingId(UUID trackingId){
+        Optional<Order> optionalOrder = orderRepo.findByTrackingId(trackingId);
+        if(optionalOrder.isPresent()){
+            return optionalOrder.get().getOrderDto();
+        }
+        return null;
+    }
+
 }
