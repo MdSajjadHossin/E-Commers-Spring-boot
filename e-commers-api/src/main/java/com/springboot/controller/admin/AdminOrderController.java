@@ -33,4 +33,9 @@ public class AdminOrderController {
         return ResponseEntity.status(HttpStatus.OK).body(orderDto);
     }
 
+    @GetMapping("/order/analytics")
+    public ResponseEntity<List<OrderDto>> getAllAnalytics(){
+        return ResponseEntity.ok(adminOrderService.getAllPlacedOrder());
+    }
+
 }
